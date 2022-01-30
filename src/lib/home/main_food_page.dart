@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sample/utils/colors.dart';
+import 'package:sample/widgets/large_text.dart';
+import 'package:sample/widgets/small_text.dart';
 
 class MainFoodPage extends StatefulWidget {
   const MainFoodPage({Key? key}) : super(key: key);
@@ -23,8 +25,14 @@ class _MainFoodPageState extends State<MainFoodPage> {
               children: [
                 Column(
                   children: const [
-                    Text('Country'),
-                    Text('City'),
+                    LargeText(
+                      text: 'Japan',
+                      color: AppColors.mainColor,
+                    ),
+                    SmallText(
+                      text: 'Tokyo',
+                      color: Colors.black54,
+                    ),
                   ],
                 ),
                 Container(
