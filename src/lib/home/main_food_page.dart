@@ -24,14 +24,19 @@ class _MainFoodPageState extends State<MainFoodPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
-                  children: const [
-                    LargeText(
+                  children: [
+                    const LargeText(
                       text: 'Japan',
                       color: AppColors.mainColor,
                     ),
-                    SmallText(
-                      text: 'Tokyo',
-                      color: Colors.black54,
+                    Row(
+                      children: const [
+                        SmallText(
+                          text: 'Tokyo',
+                          color: Colors.black54,
+                        ),
+                        Icon(Icons.arrow_drop_down_rounded),
+                      ],
                     ),
                   ],
                 ),
