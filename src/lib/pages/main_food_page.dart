@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sample/utils/colors.dart';
+import 'package:sample/widgets/home/food_carousel.dart';
 import 'package:sample/widgets/large_text.dart';
 import 'package:sample/widgets/small_text.dart';
 
@@ -55,6 +56,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
               ],
             ),
           ),
+          FoodCarousel(),
         ],
       ),
     );
