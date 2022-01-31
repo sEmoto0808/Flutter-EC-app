@@ -15,6 +15,26 @@ class _FoodCarouselState extends State<FoodCarousel> {
   /// [PageView]のコントローラ
   final _pageController = PageController(viewportFraction: 0.85);
 
+  var _currentPageValue = 0.0;
+
+  @override
+  void initState() {
+
+    _pageController.addListener(() {
+      setState(() {
+        _currentPageValue = _pageController.page ?? 0.0;
+        print('Current Page Value: ' + _currentPageValue.toString());
+      });
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
