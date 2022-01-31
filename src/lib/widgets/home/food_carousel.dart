@@ -50,49 +50,8 @@ class _FoodCarouselState extends State<FoodCarousel> {
   }
 
   Widget _buildPageItem(int index) {
-    Matrix4 matrix4 = Matrix4.identity();
-    if (index == _currentPageValue.floor()) {
-      final currentScale = 1 - (_currentPageValue - index) * (1 - _scaleFactor);
-      final currentTransform = _height * (1 - currentScale) / 2;
-      matrix4 = Matrix4.diagonal3Values(1, currentScale, 1)
-        ..setTranslationRaw(
-          0,
-          currentTransform,
-          0,
-        );
-    } else if (index == _currentPageValue.floor() + 1) {
-      // 次のページ
-      final currentScale =
-          _scaleFactor + (_currentPageValue - index + 1) * (1 - _scaleFactor);
-      final currentTransform = _height * (1 - currentScale) / 2;
-      matrix4 = Matrix4.diagonal3Values(1, currentScale, 1)
-        ..setTranslationRaw(
-          0,
-          currentTransform,
-          0,
-        );
-    } else if (index == _currentPageValue.floor() - 1) {
-      // 前のページ
-      final currentScale = 1 - (_currentPageValue - index) * (1 - _scaleFactor);
-      final currentTransform = _height * (1 - currentScale) / 2;
-      matrix4 = Matrix4.diagonal3Values(1, currentScale, 1)
-        ..setTranslationRaw(
-          0,
-          currentTransform,
-          0,
-        );
-    } else {
-      const currentScale = 0.8;
-      matrix4 = Matrix4.diagonal3Values(1, currentScale, 1)
-        ..setTranslationRaw(
-          0,
-          _height * (1 - _scaleFactor),
-          0,
-        );
-    }
-
     return Transform(
-      transform: matrix4,
+      transform: _calcTransform(index),
       child: Stack(
         children: [
           Container(
@@ -196,5 +155,51 @@ class _FoodCarouselState extends State<FoodCarousel> {
         ],
       ),
     );
+  }
+
+  /// スワイプした時のZoomのScaleを計算
+  Matrix4 _calcTransform(int index) {
+    Matrix4 matrix4 = Matrix4.identity();
+    if (index == _currentPageValue.floor()) {
+      final currentScale = 1 - (_currentPageValue - index) * (1 - _scaleFactor);
+      final currentTransform = _height * (1 - currentScale) / 2;
+      matrix4 = Matrix4.diagonal3Values(1, currentScale, 1)
+        ..setTranslationRaw(
+          0,
+          currentTransform,
+          0,
+        );
+    } else if (index == _currentPageValue.floor() + 1) {
+      // 次のページ
+      final currentScale =
+          _scaleFactor + (_currentPageValue - index + 1) * (1 - _scaleFactor);
+      final currentTransform = _height * (1 - currentScale) / 2;
+      matrix4 = Matrix4.diagonal3Values(1, currentScale, 1)
+        ..setTranslationRaw(
+          0,
+          currentTransform,
+          0,
+        );
+    } else if (index == _currentPageValue.floor() - 1) {
+      // 前のページ
+      final currentScale = 1 - (_currentPageValue - index) * (1 - _scaleFactor);
+      final currentTransform = _height * (1 - currentScale) / 2;
+      matrix4 = Matrix4.diagonal3Values(1, currentScale, 1)
+        ..setTranslationRaw(
+          0,
+          currentTransform,
+          0,
+        );
+    } else {
+      const currentScale = 0.8;
+      matrix4 = Matrix4.diagonal3Values(1, currentScale, 1)
+        ..setTranslationRaw(
+          0,
+          _height * (1 - _scaleFactor),
+          0,
+        );
+    }
+
+    return matrix4;
   }
 }
