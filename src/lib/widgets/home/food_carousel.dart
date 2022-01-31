@@ -24,7 +24,6 @@ class _FoodCarouselState extends State<FoodCarousel> {
     _pageController.addListener(() {
       setState(() {
         _currentPageValue = _pageController.page ?? 0.0;
-        print('Current Page Value: ' + _currentPageValue.toString());
       });
     });
     super.initState();
