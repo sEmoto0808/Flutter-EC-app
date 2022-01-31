@@ -16,10 +16,10 @@ class _FoodCarouselState extends State<FoodCarousel> {
   final _pageController = PageController(viewportFraction: 0.85);
 
   var _currentPageValue = 0.0;
+  final _scaleFactor = 0.8;
 
   @override
   void initState() {
-
     _pageController.addListener(() {
       setState(() {
         _currentPageValue = _pageController.page ?? 0.0;
@@ -50,6 +50,15 @@ class _FoodCarouselState extends State<FoodCarousel> {
   }
 
   Widget _buildPageItem(int index) {
+    Matrix4 matrix4 = Matrix4.identity();
+    if (index == _currentPageValue.floor()) {
+      final currentScale = 1 - (_currentPageValue - index) * (1 - _scaleFactor);
+      matrix4 = Matrix4.diagonal3Values(1, currentScale, 1);
+    } else if (index == _currentPageValue.floor() + 1) {
+      // 次のページ
+      final currentScale = _scaleFactor + (_currentPageValue - index + 1) * (1 - _scaleFactor);
+      matrix4 = Matrix4.diagonal3Values(1, currentScale, 1);
+    }
     return Stack(
       children: [
         Container(
