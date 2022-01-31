@@ -23,16 +23,32 @@ class _FoodCarouselState extends State<FoodCarousel> {
   }
 
   Widget _buildPageItem(int index) {
-    return Container(
-      height: 220,
-      margin: const EdgeInsets.symmetric(horizontal: 5),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(30),
-        child: Image.asset(
-          'assets/images/food0.png',
-          fit: BoxFit.cover,
+    return Stack(
+      children: [
+        Container(
+          height: 220,
+          width: double.maxFinite,
+          margin: const EdgeInsets.symmetric(horizontal: 5),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(30),
+            child: Image.asset(
+              'assets/images/food0.png',
+              fit: BoxFit.cover,
+            ),
+          ),
         ),
-      ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            height: 140,
+            margin: const EdgeInsets.only(left: 40, right: 40, bottom: 15,),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
