@@ -63,7 +63,14 @@ class _FoodCarouselState extends State<FoodCarousel> {
       final currentScale = _scaleFactor + (_currentPageValue - index + 1) * (1 - _scaleFactor);
       final currentTransform = _height * (1 - currentScale)/2;
       matrix4 = Matrix4.diagonal3Values(1, currentScale, 1)..setTranslationRaw(0, currentTransform, 0);
+    } else if (index == _currentPageValue.floor() - 1) {
+
+      // 前のページ
+      final currentScale = 1 - (_currentPageValue - index) * (1 - _scaleFactor);
+      final currentTransform = _height * (1 - currentScale)/2;
+      matrix4 = Matrix4.diagonal3Values(1, currentScale, 1)..setTranslationRaw(0, currentTransform, 0);
     }
+
     return Transform(
       transform: matrix4,
       child: Stack(
