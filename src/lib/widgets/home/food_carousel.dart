@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sample/utils/colors.dart';
 
 class FoodCarousel extends StatefulWidget {
   const FoodCarousel({Key? key}) : super(key: key);
@@ -9,11 +8,16 @@ class FoodCarousel extends StatefulWidget {
 }
 
 class _FoodCarouselState extends State<FoodCarousel> {
+
+  /// [PageView]のコントローラ
+  final _pageController = PageController(viewportFraction: 0.85);
+
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 320,
       child: PageView.builder(
+        controller: _pageController,
         itemCount: 5,
         itemBuilder: (context, position) {
           return _buildPageItem(position);
