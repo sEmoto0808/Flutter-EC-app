@@ -56,7 +56,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
               ],
             ),
           ),
-          FoodCarousel(),
+          const FoodCarousel(),
         ],
       ),
     );

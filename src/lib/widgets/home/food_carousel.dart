@@ -3,6 +3,7 @@ import 'package:sample/utils/colors.dart';
 import 'package:sample/widgets/icon_and_text_widget.dart';
 import 'package:sample/widgets/large_text.dart';
 import 'package:sample/widgets/small_text.dart';
+import 'package:dots_indicator/dots_indicator.dart';
 
 class FoodCarousel extends StatefulWidget {
   const FoodCarousel({Key? key}) : super(key: key);
@@ -37,15 +38,31 @@ class _FoodCarouselState extends State<FoodCarousel> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 320,
-      child: PageView.builder(
-        controller: _pageController,
-        itemCount: 5,
-        itemBuilder: (context, position) {
-          return _buildPageItem(position);
-        },
-      ),
+    return Column(
+      children: [
+        // カルーセル
+        Container(
+          height: 320,
+          child: PageView.builder(
+            controller: _pageController,
+            itemCount: 5,
+            itemBuilder: (context, position) {
+              return _buildPageItem(position);
+            },
+          ),
+        ),
+        // インジケータ
+        DotsIndicator(
+          dotsCount: 5,
+          position: _currentPageValue,
+          decorator: DotsDecorator(
+            activeColor: AppColors.mainColor,
+            size: const Size.square(9.0),
+            activeSize: const Size(18.0, 9.0),
+            activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+          ),
+        )
+      ],
     );
   }
 
