@@ -57,6 +57,12 @@ class _MainFoodPageState extends State<MainFoodPage> {
             ),
           ),
           const FoodCarousel(),
+          // list of food
+          ListView.builder(
+            itemBuilder: (context, index) {
+              return Container();
+            },
+          ),
         ],
       ),
     );
