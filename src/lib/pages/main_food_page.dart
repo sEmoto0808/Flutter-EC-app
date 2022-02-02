@@ -71,12 +71,26 @@ class _MainFoodPageState extends State<MainFoodPage> {
                         margin: const EdgeInsets.symmetric(horizontal: 20),
                         child: Row(
                           children: [
+                            // 画像
                             SizedBox(
                               width: 120,
                               height: 120,
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(20),
                                 child: Image.asset('assets/images/food0.png'),
+                              ),
+                            ),
+                            // テキスト
+                            Expanded(
+                              child: Container(
+                                height: 100,
+                                decoration: const BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(20),
+                                    bottomRight: Radius.circular(20),
+                                  ),
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ],
