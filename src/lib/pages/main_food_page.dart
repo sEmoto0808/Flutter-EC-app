@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sample/utils/colors.dart';
 import 'package:sample/widgets/home/food_carousel.dart';
+import 'package:sample/widgets/icon_and_text_widget.dart';
 import 'package:sample/widgets/large_text.dart';
 import 'package:sample/widgets/small_text.dart';
 
@@ -90,6 +91,39 @@ class _MainFoodPageState extends State<MainFoodPage> {
                                     bottomRight: Radius.circular(20),
                                   ),
                                   color: Colors.white,
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      const LargeText(text: 'Nutritious fruit meal in China'),
+                                      const SizedBox(height: 10),
+                                      const SmallText(text: 'With chinese characteristics'),
+                                      const SizedBox(height: 10),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                        children: const [
+                                          IconAndTextWidget(
+                                            icon: Icons.circle_sharp,
+                                            text: 'Normal',
+                                            iconColor: AppColors.iconColor1,
+                                          ),
+                                          IconAndTextWidget(
+                                            icon: Icons.location_on,
+                                            text: '1.7km',
+                                            iconColor: AppColors.mainColor,
+                                          ),
+                                          IconAndTextWidget(
+                                            icon: Icons.access_time_rounded,
+                                            text: '32min',
+                                            iconColor: AppColors.iconColor2,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
