@@ -8,11 +8,12 @@ class FoodDetailPage extends StatelessWidget {
     return Scaffold(
       body: Container(
         width: double.maxFinite,
-        height: 350,
+        height: double.maxFinite,
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/images/food0.png'),
-            fit: BoxFit.cover,
+            fit: BoxFit.fitWidth,
+            alignment: Alignment.topCenter,
           ),
         ),
         child: const Text('aaaBBBBBB'),
