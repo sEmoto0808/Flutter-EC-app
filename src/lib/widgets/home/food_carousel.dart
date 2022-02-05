@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:sample/pages/food_detail_page.dart';
 import 'package:sample/utils/colors.dart';
 import 'package:sample/widgets/icon_and_text_widget.dart';
 import 'package:sample/widgets/large_text.dart';
 import 'package:sample/widgets/small_text.dart';
 import 'package:dots_indicator/dots_indicator.dart';
+import 'package:get/get.dart';
 
 class FoodCarousel extends StatefulWidget {
   const FoodCarousel({Key? key}) : super(key: key);
@@ -47,7 +49,11 @@ class _FoodCarouselState extends State<FoodCarousel> {
             controller: _pageController,
             itemCount: 5,
             itemBuilder: (context, position) {
-              return _buildPageItem(position);
+              return GestureDetector(
+                onTap: () {
+                  Get.to(() => const FoodDetailPage());
+                },
+                child: _buildPageItem(position),);
             },
           ),
         ),
